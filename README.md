@@ -1,3 +1,5 @@
+# Note: I discussed the pre-lab materials with Jackson and Melissa. We wrote up our implementations seperately, but a degree of collaboration did occur.
+
 # Threading pre-lab
 
 ## Background
