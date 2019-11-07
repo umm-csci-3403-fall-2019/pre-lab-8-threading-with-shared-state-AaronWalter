@@ -52,14 +52,10 @@ public class ThreadedSearch<T> implements Searcher<T>, Runnable {
         Answer searchAnswer = new Answer();
         this.answer = searchAnswer;
         Thread[] threads = new Thread[numThreads];
-        /*float avgSearchInterval = (list.size())/numThreads; //ideas for working with cases where size is not divisible by numthreads
-        double base = Math.floor(avgSearchInterval);
-        double error = avgSearchInterval - base;*/
         int searchInterval = list.size()/numThreads;
         for(int i=0; i<this.numThreads; i++) {
             int beginIndex = i*searchInterval;
             int endIndex = beginIndex + searchInterval;
-            //int endIndex = beginIndex + (int) Math.floor(searchInterval);
             ThreadedSearch ts = new ThreadedSearch(target, list, beginIndex, endIndex, searchAnswer);
             threads[i] = new Thread(ts);
             threads[i].start();
@@ -74,8 +70,6 @@ public class ThreadedSearch<T> implements Searcher<T>, Runnable {
 
     public void run() {
 
-        //Searcher<T> searcher = new LinearSearch<>();
-        /*try {*/
             this.list = this.list.subList(begin, end);
                 for (T item : this.list) {
                     if (this.answer.getAnswer()) {
@@ -85,10 +79,6 @@ public class ThreadedSearch<T> implements Searcher<T>, Runnable {
                         this.answer.setAnswer(true);
                     }
                 }
-        /*} catch (InterruptedException ie) {
-            System.err.println("Thread was interrupted");
-            System.err.println(ie);
-        }*/
     }
 
     private class Answer {
