@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         // Update this to make things go faster or take longer for timing studies.
-        final int ARRAY_SIZE = 10000000;
+        final int ARRAY_SIZE = 10000;
         Random random = new Random();
         ArrayList<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < ARRAY_SIZE; ++i) {
@@ -28,7 +28,7 @@ public class Main {
         System.out.println("Total time was " + (totalTime.getNano() / 1000000) + " milliseconds");
 
         startTime = Instant.now();
-        System.out.println(searchArray(2000000, numbers));
+        System.out.println(searchArray(ARRAY_SIZE*2, numbers));
         System.out.println(searchArray(-45, numbers));
         endTime = Instant.now();
         totalTime = Duration.between(startTime, endTime);
